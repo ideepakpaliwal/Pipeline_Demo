@@ -16,10 +16,14 @@ pipeline {
       } 
     stage('Image') {
       agent {
-        docker { image 'node:7-alpine' }
+        docker { 
+          image 'node:7-alpine'
+          image 'maven:3-alpine'
+        }
       }
         steps {
           sh 'node --version'
+          sh 'mvn --version'
         }
       }
     }
