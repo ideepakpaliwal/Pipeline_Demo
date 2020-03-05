@@ -18,12 +18,12 @@ pipeline {
       agent {
         docker { 
           image 'node:7-alpine'
-          image 'maven:3-alpine'
+      //    image 'maven:3-alpine'
         }
       }
         steps {
           sh 'node --version'
-          sh 'mvn --version'
+        //  sh 'mvn --version'
         }
       }
     }
