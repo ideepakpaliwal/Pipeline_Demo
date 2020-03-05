@@ -17,11 +17,10 @@ pipeline {
     stage('Image') {
       agent {
         docker { image 'node:7-alpine' }
+      }
         steps {
           sh 'node --version'
         }
       }
-    
-    }
     }
 }
