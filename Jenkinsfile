@@ -1,4 +1,4 @@
-pipeline {
+/*pipeline {
   agent none
   
   stages {
@@ -26,5 +26,23 @@ pipeline {
         //  sh 'mvn --version'
         }
       }
+    }
+}
+*/
+
+pipeline {
+    agent {
+        docker { 
+                image 'maven:3-alpine' 
+                image 'node:7-alpine' 
+           }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'mvn --version'
+            }
+        }
     }
 }
