@@ -28,8 +28,9 @@ pipeline {
     
     } 
 
-    stages {
-      steps('Test') {
+    stage('Test') {
+      agent any
+      steps{
         sh 'echo "This is Testing Block"'
 
     }
