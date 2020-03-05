@@ -1,4 +1,4 @@
-/*pipeline {
+pipeline {
   agent none
   
   stages {
@@ -14,35 +14,22 @@
             '''
         }
       } 
-    stage('Image') {
-      agent {
-        docker { 
-          image 'node:7-alpine'
-      //    image 'maven:3-alpine'
-        }
-      }
+    stage('Back-End') {
+      agent { docker { image 'maven:3-alpine' } }
         steps {
-          sh 'node --version'
-        //  sh 'mvn --version'
+          sh 'mvn --version'
         }
       }
-    }
+    stage('Front-End') {
+      agent { docker {image 'node:7-alpine'} }
+      steps {
+        sh 'node --verison'
+      }
+    
+    }  
+  
+  }
 }
-*/
 
-pipeline {
-    agent {
-        docker { 
-                image 'maven:3-alpine' 
-                image 'node:7-alpine' 
-           }
-    }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-                sh 'mvn --version'
-            }
-        }
-    }
-}
+
+
