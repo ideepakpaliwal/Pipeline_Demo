@@ -1,8 +1,9 @@
 pipeline {
-  agent any
+  agent none
   
   stages {
       stage('Build') {
+        agent any
         steps {
             sh 'echo "this is a build stage!!! "'
             
@@ -13,5 +14,14 @@ pipeline {
             '''
         }
       } 
+    stage('Image') {
+      agent {
+        docker { image 'node:7-alpine' }
+        steps {
+          sh 'node --version'
+        }
+      }
+    
+    }
     }
 }
