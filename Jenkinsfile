@@ -26,8 +26,13 @@ pipeline {
         sh 'node --verison'
       }
     
-    }  
-  
+    } 
+
+    stages {
+      steps('Test') {
+        sh 'echo "This is Testing Block"'
+
+    }
   }
 }
 
