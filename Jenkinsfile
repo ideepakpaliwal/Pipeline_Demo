@@ -13,8 +13,16 @@ pipeline {
             
             '''
         }
-      } 
-    stage('Back-End') {
+      }
+    
+    stage("Docker Build") {
+      agent { dockerfile true }
+      steps {
+          sh 'node --version'
+          sh 'mvn --version'
+      }
+    }
+  /*  stage('Back-End') {
       agent { docker { image 'maven:3-alpine' } }
         steps {
           sh 'mvn --version'
@@ -26,7 +34,7 @@ pipeline {
         sh 'node --verison'
       }
     
-    } 
+    } */
 
     stage('Test') {
       agent any
